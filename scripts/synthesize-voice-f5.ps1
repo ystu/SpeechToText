@@ -32,6 +32,7 @@ New-Item -ItemType Directory -Force -Path (Join-Path $repoRoot ".cache\huggingfa
 $env:MPLCONFIGDIR = Join-Path $repoRoot ".cache\matplotlib"
 $env:HF_HOME = Join-Path $repoRoot ".cache\huggingface"
 $env:XDG_CACHE_HOME = Join-Path $repoRoot ".cache"
+$env:PYTHONIOENCODING = "utf-8"
 
 if ([string]::IsNullOrWhiteSpace($FfmpegPath)) {
     $sharedFfmpeg = Get-ChildItem -Path "$env:LOCALAPPDATA\Microsoft\WinGet\Packages" -Recurse -Filter ffmpeg.exe -ErrorAction SilentlyContinue |
