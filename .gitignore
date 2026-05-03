@@ -12,6 +12,7 @@ generated-audio/*
 !generated-audio/.gitkeep
 voice-samples/*
 !voice-samples/.gitkeep
+!voice-samples/*.txt
 
 # Temporary audio produced by the transcriber
 *.16k.wav

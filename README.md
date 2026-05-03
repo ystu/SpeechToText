@@ -60,3 +60,25 @@ generated-audio\
 ```powershell
 .\scripts\synthesize-voice-f5.ps1 -Text "各位同學大家好，今天我們一起練習中文語音合成。"
 ```
+
+## 新電腦準備
+
+第一次在新電腦使用 F5-TTS：
+
+```powershell
+.\scripts\setup-f5-tts.ps1
+```
+
+再把參考聲音檔手動放到：
+
+```text
+voice-samples\clean-ref-zh.wav
+```
+
+對應文字已放在：
+
+```text
+voice-samples\clean-ref-zh.txt
+```
+
+聲音檔不會提交到 git，請用 USB、雲端硬碟或其他私密方式帶到新電腦。
