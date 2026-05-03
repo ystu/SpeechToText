@@ -12,7 +12,8 @@ $ErrorActionPreference = "Stop"
 
 $resolvedInput = Resolve-Path -LiteralPath $InputPath
 $inputFile = Get-Item -LiteralPath $resolvedInput
-$repoRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$repoRoot = Split-Path -Parent $scriptDir
 $whisper = Join-Path $repoRoot "tools\whisper-bin-x64\Release\whisper-cli.exe"
 $ffmpeg = Get-Command ffmpeg -ErrorAction Stop
 $modelPath = Resolve-Path -LiteralPath (Join-Path $repoRoot $Model)

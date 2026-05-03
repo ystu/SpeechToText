@@ -1,11 +1,17 @@
 # Local speech-to-text assets
 models/
 tools/
+.venv/
+.cache/
 
 # User audio and generated transcripts
 audio-inbox/*
 !audio-inbox/.gitkeep
 transcripts/
+generated-audio/*
+!generated-audio/.gitkeep
+voice-samples/*
+!voice-samples/.gitkeep
 
 # Temporary audio produced by the transcriber
 *.16k.wav
