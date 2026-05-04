@@ -1,6 +1,6 @@
 param(
-    [Parameter(Mandatory = $true)]
-    [string]$Text,
+    [string]$Text = "",
+    [string]$TextFile = "",
 
     [string]$RefAudio = ".\voice-samples\20250420_____01_20s.wav",
     [string]$RefText = "",
@@ -16,6 +16,19 @@ $ErrorActionPreference = "Stop"
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $repoRoot = Split-Path -Parent $scriptDir
 $venvInfer = Join-Path $repoRoot ".venv\Scripts\f5-tts_infer-cli.exe"
+
+if (-not [string]::IsNullOrWhiteSpace($TextFile)) {
+    $resolvedTextFile = Resolve-Path -LiteralPath $TextFile
+    $Text = Get-Content -Raw -Encoding UTF8 -LiteralPath $resolvedTextFile
+
+    if ($OutputFile -eq "test-voice-f5.wav") {
+        $OutputFile = "{0}.wav" -f [System.IO.Path]::GetFileNameWithoutExtension($resolvedTextFile.Path)
+    }
+}
+
+if ([string]::IsNullOrWhiteSpace($Text)) {
+    throw "Provide text with -Text or a UTF-8 text file with -TextFile."
+}
 
 if (-not (Test-Path -LiteralPath $venvInfer)) {
     throw "F5-TTS is not installed. Expected: $venvInfer"

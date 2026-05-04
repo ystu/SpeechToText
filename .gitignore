@@ -5,6 +5,9 @@ tools/
 .cache/
 
 # User audio and generated transcripts
+input/*
+!input/.gitkeep
+!input/*.txt
 audio-inbox/*
 !audio-inbox/.gitkeep
 transcripts/
